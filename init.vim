@@ -9,8 +9,10 @@ inoremap <C-l> <C-o>a
 noremap <C-n> <C-w>>
 noremap <C-m> <C-w><
 
+" 取消高亮
+noremap <C-h> :noh<CR>
+
 map file :NERDTreeToggle<CR>
-map func :TagbarToggle<CR>
 
 " coc-snippets for markdown
 imap <TAB> <Plug>(coc-snippets-expand-jump)
@@ -111,7 +113,6 @@ Plug 'luochen1990/rainbow'
 
 "tools
 Plug 'preservim/nerdtree'
-Plug 'preservim/tagbar'
 Plug 'mbbill/undotree'
 
 "markdown tools
