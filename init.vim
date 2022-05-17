@@ -57,6 +57,10 @@ autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardIm
 let g:mdip_imgdir = 'markdown_pictures'
 let g:mdip_imgname = 'image'
 
+" html 
+
+      "autofmt
+      au BufWrite * :Autoformat
 
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   set signcolumn=number
@@ -129,6 +133,10 @@ Plug 'fatih/vim-go'
 
 "Auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" html
+Plug 'mattn/emmet-vim'
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
