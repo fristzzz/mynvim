@@ -1,4 +1,6 @@
 syntax on
+syntax enable
+filetype plugin indent on
 set nocompatible
 
 
@@ -19,15 +21,19 @@ imap <TAB> <Plug>(coc-snippets-expand-jump)
 let g:coc_snippet_prev = '<c-k>'
 source ~/AppData/Local/nvim/coc-ultisnips.vim
 
-" MarkDown Tools map 
+source ~/AppData/Local/nvim/markdown-settings.vim
+source ~/AppData/Local/nvim/mdsnippets.vim
+" source ~/AppData/Local/nvim/ultisnips.vim
+
+" MarkDown Tools map
 " 生成GFM目录
 autocmd FileType markdown nnoremap mdc :GenTocGFM<CR>
 
 let g:SnazzyTransparent = 1
 
 let g:lightline = {
-\ 'colorscheme': 'snazzy',
-\ }
+                  \ 'colorscheme': 'snazzy',
+                  \ }
 
 set number
 set cursorline
@@ -47,44 +53,40 @@ autocmd FileType go set tabstop=4
 autocmd FileType go set shiftwidth=4
 autocmd FileType go set softtabstop=4
 
-"coc settings
-set termguicolors
-set cmdheight=2
-set updatetime=300
+
 
 "md-img-paste
 autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>
 let g:mdip_imgdir = 'markdown_pictures'
 let g:mdip_imgname = 'image'
 
-" html 
+" html
 
-      "autofmt
-      au BufWrite * :Autoformat
+"autofmt
+" au BufWrite * :Autoformat
 
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  set signcolumn=number
-else 
-  set signcolumn=yes
+      set signcolumn=number
+else
+      set signcolumn=yes
 endif
 
 
 "coc extensions
 let g:coc_global_extensions = [
-      \ 'coc-json',
-      \ 'coc-vimlsp',
-      \ 'coc-html',
-      \ 'coc-tsserver',
-      \ 'coc-css',
-      \ 'coc-java',
-      \ 'coc-eslint',
-      \ 'coc-tslint-plugin',
-      \ 'coc-pairs',
-      \ 'coc-highlight',
-      \ 'coc-snippets',
-      \ 'coc-git',
-      \ 'coc-ultisnips',
-      \ 'coc-emoji',]
+                  \ 'coc-json',
+                  \ 'coc-vimlsp',
+                  \ 'coc-html',
+                  \ 'coc-css',
+                  \ 'coc-java',
+                  \ 'coc-eslint',
+                  \ 'coc-prettier',
+                  \ 'coc-pairs',
+                  \ 'coc-highlight',
+                  \ 'coc-git',
+                  \ 'coc-snippets',
+                  \ 'coc-ultisnips',
+                  \ 'coc-emoji',]
 "coc configs
 
 " Highlight the symbol and its references when holding the cursor.
@@ -115,9 +117,14 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'luochen1990/rainbow'
 
+" NERDTree highlight
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+
 "tools
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
+Plug 'preservim/tagbar'
 
 "markdown tools
 Plug 'ferrine/md-img-paste.vim'
@@ -131,8 +138,14 @@ Plug 'jiangmiao/auto-pairs'
 " gotools
 Plug 'fatih/vim-go'
 
+" rust tools
+Plug 'rust-lang/rust.vim'
+
 "Auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" snipptes
+"Plug 'SirVer/ultisnips'
 
 " html
 Plug 'mattn/emmet-vim'
@@ -140,25 +153,28 @@ Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
-lua require'colorizer'.setup()
+" lua require'colorizer'.setup()
 
 "airline theme
 let g:airline_theme="onedark"
 
 " vim-go
- let g:go_highlight_extra_types = 1 
- let g:go_highlight_operators = 0 
- let g:go_highlight_functions = 1
- let g:go_highlight_types = 1
- let g:go_highlight_function_calls = 1
- let g:go_highlight_function_parameters = 1
- let g:go_highlight_variable_declarations = 1
- let g:go_highlight_variable_assignments = 1
- let g:go_template_autocreate = 0
- let g:go_highlight_fields = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_template_autocreate = 0
+let g:go_highlight_fields = 1
 
- let g:go_def_mode='gopls'
- let g:go_info_mode='gopls'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+" rust-lang
+let g:rustfmt_autosave = 1
 
 
 " Theme
@@ -167,5 +183,14 @@ colorscheme snazzy
 " rainbow
 let g:rainbow_active=1
 source ~/AppData/Local/nvim/rainbow_conf.vim
+
+"coc settings
+set termguicolors
+set cmdheight=2
+set updatetime=300
+
+set pumblend=15
+set pumheight=10
+hi CocMenuSel ctermbg=237 guibg=#6d7ed6
 
 set rtp+=/usr/lib/python3.5/dist-packages/powerline/bindings/vim
