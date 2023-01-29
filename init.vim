@@ -3,6 +3,36 @@ syntax enable
 filetype plugin indent on
 set nocompatible
 
+set number
+set wildmenu
+set hlsearch
+set incsearch
+set ignorecase
+
+
+" 缩进
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set scrolloff=7
+set expandtab
+
+" 折叠
+set foldmethod=indent
+set foldlevelstart=99
+
+" autocmd FileType go set tabstop=4
+" autocmd FileType go set shiftwidth=4
+" autocmd FileType go set softtabstop=4
+
+" transparent
+set pumblend=20
+hi PmenuSel blend=20
+
+set winblend=20
+set winblend=20
+
+
 
 "jump out
 inoremap <C-l> <C-o>a
@@ -34,24 +64,6 @@ let g:SnazzyTransparent = 1
 let g:lightline = {
                   \ 'colorscheme': 'snazzy',
                   \ }
-
-set number
-set cursorline
-set wildmenu
-set hlsearch
-set incsearch
-set ignorecase
-
-" 缩进
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set scrolloff=5
-set expandtab
-
-autocmd FileType go set tabstop=4
-autocmd FileType go set shiftwidth=4
-autocmd FileType go set softtabstop=4
 
 
 
@@ -86,6 +98,8 @@ let g:coc_global_extensions = [
                   \ 'coc-git',
                   \ 'coc-snippets',
                   \ 'coc-ultisnips',
+                  \ 'coc-json',
+                  \ 'coc-rust-analyzer',
                   \ 'coc-emoji',]
 "coc configs
 
@@ -117,6 +131,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'luochen1990/rainbow'
 
+
 " NERDTree highlight
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -129,7 +144,7 @@ Plug 'preservim/tagbar'
 "markdown tools
 Plug 'ferrine/md-img-paste.vim'
 Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'mzlogin/vim-markdown-toc'
 
 "coding tools
@@ -150,6 +165,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " html
 Plug 'mattn/emmet-vim'
 Plug 'Chiel92/vim-autoformat'
+
+" haskell
+Plug 'hasufell/ghcup.vim'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
 
 call plug#end()
 

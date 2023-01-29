@@ -10,6 +10,7 @@ autocmd FileType markdown inoremap ;4 ####<Space>
 autocmd FileType markdown inoremap ;h ====<Space><++><Esc>F=hi
 autocmd FileType markdown inoremap ;l --------<Enter>
 autocmd FileType markdown inoremap ;c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd FileType markdown inoremap ;m $$ <++><Esc>F$i
 
 
 " vim-markdown
